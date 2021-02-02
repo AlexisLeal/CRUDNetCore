@@ -1,0 +1,59 @@
+﻿<!--  model IEnumerable<NetCoreCRUD.Models.Entity.Empleado> lo tuvimos que cambiar por que
+    espera un objeto de este tipo y no era un empleadodetalle -->
+@model IEnumerable<NetCoreCRUD.Clases.EmpleadoDetalle>
+
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Documento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cargo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telefono)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Documento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cargo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telefono)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdEmpleado">Edit</a> |
+                    <!--El asp-route-id pasa como paremetro el id-->
+                    <a asp-action="Details" asp-route-id="@item.IdEmpleado">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdEmpleado">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
